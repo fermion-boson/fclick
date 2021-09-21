@@ -74,3 +74,7 @@ function fclick(elementx){
     }
     
 }
+
+export{
+    fclick
+}
