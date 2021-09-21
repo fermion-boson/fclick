@@ -11,7 +11,7 @@ function typeObj(obj){
     if(type=='[object HTMLDivElement]'){
       return "HTMLDivElement";
 
-    }else if("[object HTMLCollection]"){
+    }else if(type=="[object HTMLCollection]"){
         return "HTMLCollection";
     }else{
         console.log("您初始化的参数类型为："+type+"，这种类型暂时不支持。");
@@ -42,17 +42,17 @@ function fclick(elementx){
         longPressEv=func;
     }
     /*初始化对象*/
-    if(typeObj(ele)=="HTMLDivElement"){
+    if(typeObj(elementx)=="HTMLDivElement"){
         ele[0]=elementx;
-    }else if(typeObj(ele)=="HTMLCollection"){
+    }else if(typeObj(elementx)=="HTMLCollection"){
         ele=elementx;
     }
     for(var i=0;i<ele.length;i++){
         ele[i].setAttribute('onselectstart','return false');/*防止双击选中文本*/
         ele[i].style.cursor="pointer";/*手型鼠标*/
     
-        ele[i].onmousedown = function(e){
-            var e=e||enent;
+        ele[i].onmousedown = function(){
+            // var e=e||event;
             if(state==0){
                 state=1;
                 setTimeout(function(){state=0;},delayTime);
@@ -76,5 +76,5 @@ function fclick(elementx){
 }
 
 export{
-    fclick
+    fclick,typeObj
 }
